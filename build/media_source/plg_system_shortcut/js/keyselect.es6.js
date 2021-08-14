@@ -4,7 +4,9 @@ class JoomlaShortcutModal {
       throw new Error('Joomla API is not properly initialised');
     }
     // Bindings
+    this.handleKeyCombinationkeyUpEvent = this.handleKeyCombinationkeyUpEvent.bind(this);
     this.initialiseKeySelectModal = this.initialiseKeySelectModal.bind(this);
+    this.handleSaveCombinationkeyUpEvent = this.handleSaveCombinationkeyUpEvent.bind(this);
     document.addEventListener(
       'DOMContentLoaded',
       this.initialiseKeySelectModal,
@@ -71,7 +73,8 @@ class JoomlaShortcutModal {
     window.bootstrap.Modal.getInstance(keySelectModal).show(keySelectModal);
   }
 
-  static handleKeyCombinationkeyUpEvent(e) {
+  // eslint-disable-next-line class-methods-use-this
+  handleKeyCombinationkeyUpEvent(e) {
     if (e.keyCode >= 65 && e.keyCode <= 90) {
       let keyValue = e.key;
       keyValue = keyValue.toUpperCase();
@@ -102,7 +105,8 @@ class JoomlaShortcutModal {
     }
   }
 
-  static handleSaveCombinationkeyUpEvent(e) {
+  // eslint-disable-next-line class-methods-use-this
+  handleSaveCombinationkeyUpEvent(e) {
     e.preventDefault();
     const keySelectModal = document.getElementById('keySelectModal');
     if (document.getElementById('newKeyCombination').textContent) {
